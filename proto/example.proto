@@ -1,0 +1,28 @@
+syntax = "proto3";
+
+option go_package = "github.com/titusdmoore/auth-service";
+
+service RouteGuide {
+   rpc GetFeature(Point) returns (Feature) {}
+   rpc ListFeatures(Rectangle) returns (stream Feature) {}
+   rpc RecordRoute(stream Point) returns (RouteSummary) {}
+   rpc RouteChat(stream RouteNote) returns (stream RouteNote) {}
+}
+
+message Point {
+    int32 latitiude = 1;
+    int32 longitude = 2;
+}
+
+message Feature {
+    int32 placeholder = 1;
+}
+message Rectangle {
+    int32 placeholder = 1;
+}
+message RouteSummary {
+    int32 placeholder = 1;
+}
+message RouteNote {
+    int32 placeholder = 1;
+}

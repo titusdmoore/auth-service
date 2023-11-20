@@ -1,5 +1,10 @@
 syntax = "proto3";
 
+service AuthService {
+    rpc Register (RegisterRequest) returns (RegisterResponse) {}
+    rpc Login (LoginRequest) returns (LoginResponse) {}
+}
+
 message RegisterRequest {
     string username = 1;
     string email = 2;

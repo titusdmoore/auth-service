@@ -71,6 +71,7 @@ func pageCreateViewHandler(w http.ResponseWriter, r *http.Request) {
 }
 
 func pageCreateHandler(w http.ResponseWriter, r *http.Request) {
+    fmt.Println(r.Method, "This is inside create")
     if r.Method != "POST" {
         http.Error(w, "Method is not Supported", http.StatusNotFound)
     }
@@ -79,6 +80,7 @@ func pageCreateHandler(w http.ResponseWriter, r *http.Request) {
     title, body := r.FormValue("title"), r.FormValue("body")
 
     p := &Page{ Title: title, Body: []byte(body) }
+    fmt.Println(p)
     p.Save()
 
     http.Redirect(w, r, "/view/"+title, http.StatusFound)

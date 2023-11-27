@@ -98,6 +98,14 @@ func pageCreateHandler(w http.ResponseWriter, r *http.Request) {
 	http.Redirect(w, r, "/view/"+title, http.StatusFound)
 }
 
+func handleFuncWrapper(fn http.HandlerFunc) http.HandlerFunc {
+	return func(w http.ResponseWriter, r *http.Request) {
+		fmt.Println("Before")
+		fn(w, r)
+		fmt.Println("After")
+	}
+}
+
 func main() {
 	http.HandleFunc("/view/", pageViewHandler)
 	http.HandleFunc("/edit/", pageEditHandler)

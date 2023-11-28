@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title>Titus' Awesome Streaming Service</title>
+    <title>{{ .Title }}</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script src="https://unpkg.com/htmx.org@1.9.9"
@@ -13,7 +13,10 @@
 </head>
 
 <body>
-    <h1>A totally new streaming service</h1>
+    <h1>Titus' Blog</h1>
+    <div hx-get="/articles">
+        Show Articles
+    </div>
 </body>
 
 </html>

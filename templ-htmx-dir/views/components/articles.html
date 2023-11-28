@@ -1,0 +1,12 @@
+<section>
+    <ul>
+        {{ range .Articles }}
+        <li>
+            <article>
+                <h2>{{ .Title }}</h2>
+                <p>{{ .Author }}</p>
+            </article>
+        </li>
+        {{ end }}
+        <ul>
+</section>

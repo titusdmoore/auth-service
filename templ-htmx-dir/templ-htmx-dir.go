@@ -25,7 +25,7 @@ type ArticleData struct {
 }
 
 func db_setup(db *sql.DB) {
-
+	db.QueryRow("SELECT name FROM sqlite_master WHERE type='table' AND name='?';", "articles")
 }
 
 func registerHandlers(db *sql.DB) {

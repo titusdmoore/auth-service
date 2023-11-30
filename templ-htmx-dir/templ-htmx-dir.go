@@ -25,7 +25,14 @@ type ArticleData struct {
 }
 
 func db_setup(db *sql.DB) {
-	db.QueryRow("SELECT name FROM sqlite_master WHERE type='table' AND name='?';", "articles")
+	var table_name string
+	row := db.QueryRow("SELECT name FROM sqlite_master WHERE type='table' AND name='?';", "articles")
+	err := row.Scan(&table_name)
+	if err != nil {
+		fmt.Println(err)
+	}
+
+	fmt.Println(table_name)
 }
 
 func registerHandlers(db *sql.DB) {
@@ -54,7 +61,7 @@ func registerHandlers(db *sql.DB) {
 }
 
 func main() {
-	db, err := sql.Open("sqlite3", "./data/blog.db")
+	db, err := sql.Open("sqlite3", "./blog.db")
 
 	if err != nil {
 		log.Fatal(err)
